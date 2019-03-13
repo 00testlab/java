@@ -1,40 +1,52 @@
-package prg3;
-
-interface TravelPlan{
-	public void chennai_to_hyd(String mode, double fare);
-	public void hyd_to_indore(String mode, double fare);
-	public void indore_to_delhi(String mode, double fare);
-}
-
-class TravelAgent implements TravelPlan
+interface Tourplan
 {
-	double totalfare=0;
-	public void chennai_to_hyd(String mode,double fare)
-	{
-		System.out.println("Travel Chennai to Hyderabad by "+mode+". Travel fare is"+fare);
-		totalfare+=fare;
-	}
-	public void hyd_to_indore(String mode,double fare)
-	{
-		System.out.println("Travel Hyderabad to Indore by "+mode+". Travel fare is"+fare);
-		totalfare+=fare;
-	}
-	public void indore_to_delhi(String mode,double fare)
-	{
-		System.out.println("Travel Indore to Delhi by "+mode+". Travel fare is "+fare);
-		totalfare+=fare;
-	}
+		public abstract void chennaitodelhi(String mode,int fare);
+		public abstract void hydtoindore(String mode,int fare);
+		public abstract void indoretodelhi(String mode,int fare);
+		public abstract void totalfare();
 }
+class Travelplan implements Tourplan
+{
+	int totalfare1;
+	public void chennaitodelhi(String mode,int fare)
+	{
+		System.out.println("Chennai to delhi ");
+		System.out.println("Mode:"+mode);
+		System.out.println("Fare:"+fare);
+		System.out.println();
+		totalfare1+=fare;
 
-public class prg3 {
+	}
+	public void hydtoindore(String mode,int fare)
+	{
+		System.out.println("Hyderbad to Indore ");
+		System.out.println("Mode:"+mode);
+		System.out.println("Fare:"+fare);
+		System.out.println();
+		totalfare1+=fare;
+	}
+	public void indoretodelhi(String mode,int fare)
+	{
+		System.out.println("Indore to Delhi ");
+		System.out.println("Mode:"+mode);
+		System.out.println("Fare:"+fare);
+		System.out.println();
+		totalfare1+=fare;
+	}
+	public void totalfare()
+	{
+		System.out.println("Total fare="+totalfare1);
+	}
+
+}
+class prg3
+{
 	public static void main(String args[])
 	{
-		TravelAgent t1 = new TravelAgent();
-		t1.chennai_to_hyd("Plane", 4000.0);
-		t1.hyd_to_indore("Bus", 850.0);
-		t1.indore_to_delhi("Train", 950.0);
-		System.out.println("Total Fare is: "+t1.totalfare);
+		Travelplan t1=new Travelplan();
+		t1.chennaitodelhi("bus",10000);
+		t1.hydtoindore("plane",100000);
+		t1.indoretodelhi("train",20000);
+		t1.totalfare();
 	}
-
-}
-
+} 
